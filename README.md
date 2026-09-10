@@ -4,14 +4,14 @@ ArchGuard 的 Go MCP 工具网关，负责工具发现、身份传播、授权�
 
 ## 当前状态
 
-M0 仓库基线已建立，Go module 和 MCP 工具尚未初始化。
+阶段 0 `v0.1.0-foundation` 正在远端收口。本仓库在阶段 5 `v0.6.0-mcp` 才正式启用；Go module、MCP 协议和工具均尚未初始化。阶段 4 先在 Java Agent 中形成稳定工具用例，阶段 5 再抽离网关，避免建立空壳或复制 Platform 业务逻辑。
 
 ## 职责
 
 - 提供窄而明确的 MCP 工具目录和版本化 Schema。
 - 在每次调用中传播并校验用户、租户、项目和 trace 上下文。
 - 实现默认拒绝、最小权限、限流、超时、取消、审计和优雅关闭。
-- 汇聚只读的代码、依赖、违规、ADR 和 CI 查询能力。
+- 首批承载 `get_project`、`get_scan_result`、`list_findings`、`get_rule`、`search_architecture_docs`、`compare_baseline` 和受控的 `create_remediation_draft`；写语义必须显式审批。
 
 ## 非职责
 
@@ -36,3 +36,7 @@ git status --short
 ```
 
 Go module 建立后运行 `gofmt`、`go vet ./...`、`go test ./...` 和适用的 `go test -race ./...`。当前尚无 Go 包可测试。
+
+## 许可证
+
+本仓库采用 [Apache License 2.0](LICENSE)。
